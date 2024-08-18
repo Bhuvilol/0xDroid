@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:ems="12"
         android:inputType="numberPassword"
-        android:hint="Enter ur Password"
+        android:hint="Enter your Password"
         android:layout_gravity="center"
         />
     <Button
