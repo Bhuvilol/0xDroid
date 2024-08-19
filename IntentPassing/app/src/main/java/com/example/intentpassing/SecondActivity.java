@@ -2,8 +2,6 @@ package com.example.intentpassing;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -12,34 +10,30 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_second);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Button nextButton = findViewById(R.id.btnNxt);
 
-        Bundle extras = new Bundle();
-        extras.putString("title","Home");
-        extras.putString("StudentName","Bhabesh");
-        extras.putInt("RollNo" , 10);
 
-        Intent iNext  = new Intent(MainActivity.this, SecondActivity.class);
-        iNext.putExtras(extras);
+        Intent fromAct = getIntent();
+        String title = fromAct.getStringExtra("title");
+        String studentName = fromAct.getStringExtra("StudentName");
+        int rollNo = fromAct.getIntExtra("RollNo",0);
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(iNext);
-            }
-        });
+
+        TextView sinfo = findViewById(R.id.StudentInfo);
+        sinfo.setText("Roll No : "+rollNo+", Name : "+studentName);
+
+//        getSupportActionBar().setTitle(title);
 
     }
 }

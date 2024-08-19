@@ -6,15 +6,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="bottom|end"
-    tools:context=".MainActivity">
+    android:gravity="center"
+    android:background="#FDD835"
+    tools:context=".SecondActivity">
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
-        android:id="@+id/btnNxt"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="40dp"
+        android:text="Name"
+        android:id="@+id/StudentInfo"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        android:textColor="#FA1E30"
         />
+
 </LinearLayout>
