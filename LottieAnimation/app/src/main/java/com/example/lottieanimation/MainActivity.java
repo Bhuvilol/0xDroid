@@ -8,8 +8,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+import com.airbnb.lottie.LottieAnimationView;
 
+public class MainActivity extends AppCompatActivity {
+LottieAnimationView laView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,5 +22,10 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        laView = findViewById(R.id.laView);
+        laView.setAnimation(R.raw.lottie);
+        laView.playAnimation();
+        laView.loop(true);
     }
 }
