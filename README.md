@@ -1,2 +1,2 @@
 # 0xDroid
-Tracking my kotlin journey
+Tracking my App Development journey
