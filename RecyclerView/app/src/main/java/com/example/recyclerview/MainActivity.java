@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 RecyclerView recyclerView;
 ArrayList<ContactModel> arrContacts = new ArrayList<>();
 RecyclerContactAdapter adapter;
+FloatingActionButton btnOpenDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +34,12 @@ RecyclerContactAdapter adapter;
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        FloatingActionButton btnOpenDialog = findViewById(R.id.btnOpenDialog);
+        recyclerView = findViewById(R.id.recyclerContact);
+        btnOpenDialog = findViewById(R.id.btnOpenDialog);
         btnOpenDialog.setOnClickListener(v -> {
             Dialog dialog = new Dialog(MainActivity.this);
             dialog.setContentView(R.layout.add_update_lay);
+
             EditText edtName = dialog.findViewById(R.id.edtName);
             EditText edtNumber = dialog.findViewById(R.id.edtNumber);
             Button btnAction = dialog.findViewById(R.id.btnAction);
@@ -54,7 +56,7 @@ RecyclerContactAdapter adapter;
                 } else {
                     Toast.makeText(MainActivity.this, "Please Enter Number", Toast.LENGTH_SHORT).show();
                 }
-                arrContacts.add(new ContactModel(name,number));
+                arrContacts.add(new ContactModel(R.drawable.woman1,name,number));
                 adapter.notifyItemInserted(arrContacts.size()-1);
                 recyclerView.scrollToPosition(arrContacts.size()-1);
                 dialog.dismiss();

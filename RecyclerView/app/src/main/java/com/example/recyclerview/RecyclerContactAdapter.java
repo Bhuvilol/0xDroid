@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,6 +25,8 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
     Context context;
     ArrayList<ContactModel> arrContacts;
 
+    private int lastposition = -1;
+
     RecyclerContactAdapter(Context context, ArrayList<ContactModel> arrContacts){
         this.context = context;
         this.arrContacts = arrContacts;
@@ -34,13 +38,18 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
         View view = LayoutInflater.from(context).inflate(R.layout.contact_row,parent,false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.imgContact.setImageResource(arrContacts.get(position).img);
-        holder.txtName.setText(arrContacts.get(position).name);
-        holder.txtNumber.setText(arrContacts.get(position).number);
+        ContactModel model = (ContactModel) arrContacts.get(position);
+
+        holder.imgContact.setImageResource(model.img);
+        holder.txtName.setText(model.name);
+        holder.txtNumber.setText(model.number);
+
+        setAnimation(holder.itemView,position);
 
         holder.llRow.setOnClickListener(new View.OnClickListener() {
 
@@ -57,8 +66,8 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
                 TextView txtTitle = dialog.findViewById(R.id.txtTitle);
                 txtTitle.setText("Update Content");
 
-                edtName.setText(arrContacts.get(position).name);
-                edtNumber.setText(arrContacts.get(position).number);
+                edtName.setText(model.name);
+                edtNumber.setText(model.number);
 
                 btnAction.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -75,7 +84,7 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
                             Toast.makeText(context, "Please Update Number", Toast.LENGTH_SHORT).show();
                         }
 
-                        arrContacts.set(position,new ContactModel(arrContacts.get(position).img,name,number));
+                        arrContacts.set(position,new ContactModel(model.img,name,number));
                         notifyItemChanged(position);
                         dialog.dismiss();
                     }
@@ -131,6 +140,14 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
             imgContact = itemView.findViewById(R.id.imgContacts);
 
             llRow = itemView.findViewById(R.id.llRow);
+        }
+    }
+
+    private void setAnimation(View viewToAnimate, int position){
+        if (position>lastposition) {
+            Animation slideIn = AnimationUtils.loadAnimation(context,R.anim.rcy_anim);
+            viewToAnimate.startAnimation(slideIn);
+            lastposition=position;
         }
     }
 }
