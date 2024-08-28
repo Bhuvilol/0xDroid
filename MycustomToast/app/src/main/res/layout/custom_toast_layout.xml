@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewcontainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8EC1DA"
+    android:gravity="center"
+    android:padding="20dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:src="@drawable/baseline_cloud_circle_24"
+        />
+    <TextView
+        android:id="@+id/textmsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="11dp"
+        android:text="Test Message"/>
+
+</LinearLayout>
