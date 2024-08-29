@@ -1,7 +1,6 @@
-package com.example.logcatexample;
+package com.example.mydialogbox;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,9 +20,5 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        Log.d("Test","Test Log");
-        String tag = "First tag";
-        Log.d(tag,"My First Log Message");
     }
 }
