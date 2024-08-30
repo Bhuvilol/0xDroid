@@ -28,18 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("Title")
-//                .setIcon(R.drawable.baseline_info_24)
-//                .setMessage("Message")
-//                .setNeutralButton("I have read", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        Toast.makeText(MainActivity.this, "Yes , you can proceed now", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//        AlertDialog dialog1 = builder.create();
-//        dialog1.show();
-
         AlertDialog.Builder delDialog = new AlertDialog.Builder(MainActivity.this);
         delDialog.setTitle("Delete")
                 .setIcon(R.drawable.baseline_delete_forever_24)
@@ -91,6 +79,4 @@ public class MainActivity extends AppCompatActivity {
         exit.show();
 //        super.onBackPressed();
     }
-
-
 }
