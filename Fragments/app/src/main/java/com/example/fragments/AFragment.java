@@ -23,7 +23,7 @@ public class AFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_a, container, false);
-        TextView textview = view.findViewById(R.id.txtFrag);
+//        TextView textview = view.findViewById(R.id.txtFrag);
         //Set of instructions below
 
 
